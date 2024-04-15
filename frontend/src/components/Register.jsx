@@ -11,7 +11,7 @@ const Register = ({ onRegister }) => {
     try {
       await axios.post('/register', { username, email, password });
       console.log('Registration successful');
-      onRegister();
+      onRegister(username);
     } catch (error) {
       console.error('Registration failed', error);
     }
