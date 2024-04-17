@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import ChatRoom from './components/ChatRoom';
 import Register from './components/Register';
 import Login from './components/Login';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
-  // const [jwtToken, setJwtToken] = useState('');
   const [showLogin, setShowLogin] = useState(true);
 
   const handleLogin = (username) => {
@@ -31,13 +31,13 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full space-y-8">
-        <h1 className="text-3xl text-center font-semibold">Join A Chat</h1>
-        {isLoggedIn ? (
-          <ChatRoom username={username} onLogout={handleLogout} />
-        ) : (
-          <div className="space-y-4">
+    <Router>
+      <Routes>
+        <Route path="/chatroom" element={isLoggedIn ? <ChatRoom username={username} /> : <Navigate to="/" />} />
+        <Route path="/" element={ isLoggedIn ? <Navigate to="/chatroom" /> :
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="max-w-md w-full space-y-8"> 
+            <div className="space-y-4">
             { showLogin ? (
             <Login onLogin={handleLogin} />
           ) : (
@@ -46,9 +46,10 @@ const App = () => {
               {showLogin ? "Don't have an account? Register" : "Already have an account? Login"}
             </button>
           </div>
-        )}
-      </div>
-    </div>
+          </div>
+          </div>}/>
+      </Routes>
+    </Router>
   );
 };
 

@@ -6,6 +6,10 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
+    if (username.trim() === '' || password.trim() === '') {
+      alert('Please fill in all fields before registering.');
+      return;
+    }
     e.preventDefault();
     try {
       const response = await axios.post('/login', { username, password });
@@ -13,7 +17,10 @@ const Login = ({ onLogin }) => {
       localStorage.setItem('token', token);
       onLogin(username);
     } catch (error) {
+      alert("Login failed")
+      setPassword('');
       console.error('Login failed', error);
+      return;
     }
   };
 

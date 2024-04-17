@@ -7,6 +7,10 @@ const Register = ({ onRegister }) => {
   const [password, setPassword] = useState('');
 
   const handleRegister = async (e) => {
+    if (username.trim() === '' || password.trim() === '' || email.trim() === '') {
+      alert('Please fill in all fields before registering.');
+      return;
+    }
     e.preventDefault();
     try {
       await axios.post('/register', { username, email, password });
