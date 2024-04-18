@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
     }
     e.preventDefault();
     try {
-      const response = await axios.post('/login', { username, password });
+      const response = await axios.post('/auth/login', { username, password });
       const token = response.data.token;
       localStorage.setItem('token', token);
       onLogin(username);

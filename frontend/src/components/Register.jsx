@@ -13,7 +13,7 @@ const Register = ({ onRegister }) => {
     }
     e.preventDefault();
     try {
-      await axios.post('/register', { username, email, password });
+      await axios.post('/auth/register', { username, email, password });
       console.log('Registration successful');
       onRegister(username);
     } catch (error) {
