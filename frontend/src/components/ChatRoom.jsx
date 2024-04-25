@@ -81,6 +81,8 @@ const ChatRoom = ({username}) => {
                 setPublicChats([...publicChats]);
                 break;
         }
+        const elem = document.getElementById('chat-m')
+        elem.scrollTop = elem.scrollHeight;
     }
 
     const onPrivateMessage = (payload)=>{
@@ -160,7 +162,7 @@ const ChatRoom = ({username}) => {
                 </ul>
             </div>
             {tab==="CHATROOM" && <div className="chat-content">
-                <ul className="chat-messages">
+                <ul className="chat-messages" id='chat-m'>
                     {publicChats.map((chat,index)=>(
                         <li className={`message ${chat.senderName === userData.username && "self"}`} key={index}>
                             {chat.senderName !== userData.username && <div className="avatar">{chat.senderName}</div>}
