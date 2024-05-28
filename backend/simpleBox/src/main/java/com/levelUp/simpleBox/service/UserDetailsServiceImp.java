@@ -1,6 +1,7 @@
 package com.levelUp.simpleBox.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,10 +17,6 @@ public class UserDetailsServiceImp implements UserDetailsService{
 
     @Autowired
     private UserRepository userRepository;
-
-    public List<User> findAllUsers(){
-        return userRepository.findAll();
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

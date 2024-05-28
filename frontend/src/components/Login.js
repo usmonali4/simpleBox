@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "../api/axiosConfig"
+import '../index.css'
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -25,11 +26,11 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-4">
-      <h2 className="text-xl font-semibold text-center">Login</h2>
-      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-3 py-2 border rounded-lg" />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 border rounded-lg" />
-      <button type="submit" className="w-full bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600">Login</button>
+    <form onSubmit={handleLogin}>
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button type="submit">Login</button>
     </form>
   );
 };

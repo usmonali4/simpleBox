@@ -39,7 +39,7 @@ const ChatRoom = ({username}) => {
           })
           setPrivateChats(new Map(privateChats));
         } catch (error) {
-          setError(error.message);
+          // setError(error.message);
         }
       };
   
